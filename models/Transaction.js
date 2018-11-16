@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../db/connection');
 const Schema = mongoose.Schema;
 
 const Transaction = new Schema({
@@ -6,6 +6,4 @@ const Transaction = new Schema({
     category: String,
 })
 
-module.exports = {
-    Transaction: Transaction
-}
+module.exports = mongoose.model('Transaction', Transaction)

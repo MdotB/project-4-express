@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Transaction } = require("../models/Transaction");
+const Transaction = require("../models/Transaction");
 const mongoose = require('mongoose');
 
 // Get all transactions
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.post("/new", (req, res) => {
     let newTransaction = {
         amount: req.body.amount,
-        category: req.body.cateogry
+        category: req.body.category
     }
     Transaction.create(newTransaction)
         .then(newTransaction => {
