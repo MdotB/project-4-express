@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/MdotB/project-4-express/issues"
   },
-  "homepage": "https://github.com/MdotB/project-4-express#readme"
+  "homepage": "https://github.com/MdotB/project-4-express#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12"
+  }
 }
