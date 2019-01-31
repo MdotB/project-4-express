@@ -1,23 +1,22 @@
 const router = require('express').Router();
 const Transaction = require("../models/Transaction");
-const mongoose = require('mongoose');
 
 // Get all transactions
 router.get('/', (req, res) => {
     Transaction.find({})
         .then(data => {
-            // convert to JSON
-            res.json(data)
+            res.json(data) // convert to JSON
         })
         .catch(err => {
             console.log(err)
         })
 })
-
+// Post new transaction
 router.post("/new", (req, res) => {
     let newTransaction = {
         amount: req.body.amount,
-        category: req.body.category
+        category: req.body.category,
+        date: req.body.date
     }
     Transaction.create(newTransaction)
         .then(newTransaction => {
@@ -27,5 +26,18 @@ router.post("/new", (req, res) => {
             console.log(err)
         })
 })
+
+// TODO: Delete transaction by Id
+router.delete('/delete/:id', (req, res) => {
+    Transaction.findByIdAndDelete({ _id: req.params.id })
+        .then(transaction => {
+            res.json(transaction)
+            console.log(transaction)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+// TODO: Edit transaction
 
 module.exports = router;
