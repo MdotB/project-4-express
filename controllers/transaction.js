@@ -11,6 +11,20 @@ router.get('/', (req, res) => {
             console.log(err)
         })
 })
+
+// Get one transaction by ID
+router.get('/:id', (req, res) => {
+    Transaction.findById({ _id: req.params.id})
+        .then(transaction => {
+            res.json(transaction)
+            console.log(transaction)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+
 // Post new transaction
 router.post("/new", (req, res) => {
     let newTransaction = {
@@ -27,7 +41,7 @@ router.post("/new", (req, res) => {
         })
 })
 
-// TODO: Delete transaction by Id
+// Delete transaction by Id
 router.delete('/delete/:id', (req, res) => {
     Transaction.findByIdAndDelete({ _id: req.params.id })
         .then(transaction => {
