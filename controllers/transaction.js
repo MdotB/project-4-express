@@ -48,7 +48,7 @@ router.put("/edit/:id", (req, res) => {
         category: req.body.amount,
         date: req.body.date
     }
-    Transaction.findByIdAndUpdate({ _id: req.params.id }, updatedTransaction)
+    Transaction.findOneAndUpdate({ _id: req.params.id }, updatedTransaction)
     .then(transaction => {
         res.json(transaction)
         console.log(transaction)
