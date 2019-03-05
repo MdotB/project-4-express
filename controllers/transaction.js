@@ -41,6 +41,23 @@ router.post("/new", (req, res) => {
         })
 })
 
+// Edit transaction by Id
+router.put("/edit/:id", (req, res) => {
+    let updatedTransaction = {
+        amount: req.body.amount,
+        category: req.body.amount,
+        date: req.body.date
+    }
+    Transaction.findByIdAndUpdate({ _id: req.params.id }, updatedTransaction)
+    .then(transaction => {
+        res.json(transaction)
+        console.log(transaction)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
 // Delete transaction by Id
 router.delete('/delete/:id', (req, res) => {
     Transaction.findByIdAndDelete({ _id: req.params.id })
